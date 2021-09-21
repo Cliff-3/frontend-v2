@@ -1035,7 +1035,7 @@ export const TSD_POOL_NAME = "USDT.e-TSD Pool"
 export const TSD_POOL_ID = 21
 
 export const YAK_POOL_NAME = "mYAK/YAK Pool"
-export const YAK_POOL_ID = 1
+export const YAK_POOL_ID = 23
 
 export type PoolName =
   | typeof GDL_POOL_NAME

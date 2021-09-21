@@ -200,7 +200,7 @@ function Pools(): ReactElement {
       type: PoolTypes.LIVE,
       isOutdated: false,
       isOnlyStake: false,
-      Stakable: false,
+      Stakable: true,
     },
     {
       poolData: usdcePoolData,
