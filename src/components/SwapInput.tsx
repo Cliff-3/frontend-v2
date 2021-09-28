@@ -12,6 +12,7 @@ import useDetectOutsideClick from "../hooks/useDetectOutsideClick"
 import { useTranslation } from "react-i18next"
 
 interface Props {
+  disabled: boolean
   tokens: TokenOption[]
   selected: string
   inputValue: string
@@ -21,6 +22,7 @@ interface Props {
   onChangeAmount?: (value: string) => void
 }
 export default function SwapInput({
+  disabled,
   tokens,
   selected,
   onSelect,
@@ -50,7 +52,9 @@ export default function SwapInput({
     <div className="swapInputContainer">
       <div
         className={classnames("selectGroup", onSelect && "hoverPointer")}
-        onClick={() => onSelect && setIsDropdownOpen((prev) => !prev)}
+        onClick={() =>
+          onSelect && !disabled && setIsDropdownOpen((prev) => !prev)
+        }
         tabIndex={0}
         onKeyDown={(e) => {
           if (onSelect && (e.key === "Enter" || e.key === " ")) {
@@ -61,7 +65,10 @@ export default function SwapInput({
         {selectedToken && <img src={selectedToken.icon} />}
         <div className="tokenNameContainer">
           <div className="symbolArrowContainer">
-            <b className="textBoldPurple">
+            <b
+              className="textBoldPurple"
+              style={{ ...(disabled ? { color: "gray" } : {}) }}
+            >
               {selectedToken ? selectedToken.symbol : t("ChooseToken")}
             </b>
             &nbsp;

@@ -126,6 +126,7 @@ const SwapPage = (props: Props): ReactElement => {
               tokens={tokenOptions.from.filter(
                 ({ symbol }) => symbol !== toState.symbol,
               )}
+              disabled={false}
               onSelect={onChangeFromToken}
               onChangeAmount={onChangeFromAmount}
               selected={fromState.symbol}
@@ -143,6 +144,7 @@ const SwapPage = (props: Props): ReactElement => {
               tokens={tokenOptions.to.filter(
                 ({ symbol }) => symbol !== fromState.symbol,
               )}
+              disabled={fromState.symbol == ""}
               onSelect={onChangeToToken}
               selected={toState.symbol}
               inputValue={toState.value}
