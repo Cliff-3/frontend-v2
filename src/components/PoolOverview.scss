@@ -1,4 +1,5 @@
 @import "../styles/theme";
+@import "../styles/viewports";
 
 a {
   text-decoration: none;
@@ -16,12 +17,19 @@ div.poolOverview {
   display: inline-block;
   vertical-align: top;
   width: 100%;
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
   button.button.large {
     width: 135px;
     height: 35px;
     font-size: 15px;
+  }
+
+  @include breakpoint(sm) {
+    button.button.large {
+      width: 100%;
+    }
   }
 
   h4.title {
@@ -64,16 +72,16 @@ div.poolOverview {
   }
 
   .right {
-    display: grid;
-    justify-content: end;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .margin {
       margin-right: 24px;
     }
     .poolInfo {
       display: flex;
       flex-flow: row wrap;
-      align-items: flex-start;
-      justify-self: end;
+      justify-content: flex-end;
     }
     .buttons {
       justify-content: flex-end;
@@ -85,6 +93,19 @@ div.poolOverview {
       grid-column-gap: 16px;
       -webkit-column-gap: 16px;
       column-gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @include breakpoint(sm) {
+      .buttons {
+        width: 100%;
+      }
+    }
+  }
+
+  @include breakpoint(sm) {
+    .right {
+      width: 100%;
     }
   }
 

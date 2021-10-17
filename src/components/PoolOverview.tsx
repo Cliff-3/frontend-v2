@@ -62,78 +62,88 @@ function PoolOverview({
     }),
   }
   return (
-    <div className="poolOverview">
-      <div className="table">
-        <div className="left">
-          <h4 className="title">{formattedData.name}</h4>
-          {formattedData.tokens.length ? (
-            <div className="tokens">
-              <span style={{ marginRight: "8px" }}>[</span>
-              <div className="tokens">
-                {formattedData.tokens.map((token) => (
-                  <div className="token" key={token.symbol}>
-                    <img alt="icon" src={token.icon} />
-                    <span>{token.name}</span>
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          <div className="poolOverview">
+            <div className="table">
+              <div className="left">
+                <h4 className="title">{formattedData.name}</h4>
+                {formattedData.tokens.length ? (
+                  <div className="tokens">
+                    <span style={{ marginRight: "8px" }}>[</span>
+                    <div className="tokens">
+                      {formattedData.tokens.map((token) => (
+                        <div className="token" key={token.symbol}>
+                          <img alt="icon" src={token.icon} />
+                          <span>{token.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <span style={{ marginLeft: "8px" }}>]</span>
                   </div>
-                ))}
+                ) : null}
               </div>
-              <span style={{ marginLeft: "8px" }}>]</span>
-            </div>
-          ) : null}
-        </div>
 
-        <div className="right">
-          <div className="poolInfo">
-            <div className="margin Apy">
-              <span className="label">{t("TVL")}</span>
-              <span>
-                {formatUSDNumber(
-                  parseFloat(Number(formattedData.tvl || 0).toPrecision(6)),
-                  true,
-                )}
-              </span>
+              <div className="right">
+                <div className="poolInfo">
+                  <div className="margin Apy">
+                    <span className="label">{t("TVL")}</span>
+                    <span>
+                      {formatUSDNumber(
+                        parseFloat(
+                          Number(formattedData.tvl || 0).toPrecision(6),
+                        ),
+                        true,
+                      )}
+                    </span>
+                  </div>
+                  <div className="margin Apy">
+                    <span className="label">{t("apy")}</span>
+                    <span
+                      className={
+                        classNames({ plus: formattedData.apy }) +
+                        classNames({ minus: !formattedData.apy })
+                      }
+                    >
+                      {formattedData.apy}
+                    </span>
+                  </div>
+                </div>
+                <div className="buttons">
+                  {Stakable && (
+                    <>
+                      <Button
+                        kind="secondary"
+                        onClick={() =>
+                          histroy.push("stake", { poolName: poolName })
+                        }
+                      >
+                        {t("stake")}
+                      </Button>
+                    </>
+                  )}
+                  {!isOnlyStake && (
+                    <>
+                      <Button
+                        kind="ternary"
+                        onClick={() =>
+                          histroy.push("withdraw", { poolName: poolName })
+                        }
+                      >
+                        {t("withdraw")}
+                      </Button>
+                      <Button
+                        kind="primary"
+                        onClick={() => histroy.push("deposit", { poolName })}
+                      >
+                        {t("deposit")}
+                      </Button>
+                    </>
+                  )}
+                </div>
+              </div>
             </div>
-            <div className="margin Apy">
-              <span className="label">{t("apy")}</span>
-              <span
-                className={
-                  classNames({ plus: formattedData.apy }) +
-                  classNames({ minus: !formattedData.apy })
-                }
-              >
-                {formattedData.apy}
-              </span>
-            </div>
-          </div>
-          <div className="buttons">
-            {Stakable && (
-              <>
-                <Button
-                  kind="secondary"
-                  onClick={() => histroy.push("stake", { poolName: poolName })}
-                >
-                  {t("stake")}
-                </Button>
-              </>
-            )}
-            {!isOnlyStake && (
-              <>
-                <Button
-                  kind="ternary"
-                  onClick={() =>
-                    histroy.push("withdraw", { poolName: poolName })
-                  }
-                >
-                  {t("withdraw")}
-                </Button>
-                <Button
-                  kind="primary"
-                  onClick={() => histroy.push("deposit", { poolName })}
-                >
-                  {t("deposit")}
-                </Button>
-              </>
-            )}
           </div>
         </div>
       </div>
