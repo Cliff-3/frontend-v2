@@ -1,9 +1,12 @@
 @import "../styles/theme.scss";
+@import "../styles/viewports";
 
 div.tokenInput {
   display: flex;
   position: relative;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 
   > span {
     // margin-left: 8px;
@@ -47,4 +50,11 @@ div.tokenInput {
 div.tokenBtnContainer {
   display: flex;
   text-align: center;
+  justify-content: center;
+}
+
+@include breakpoint(sm) {
+  div.tokenBtnContainer {
+    width: 100%;
+  }
 }

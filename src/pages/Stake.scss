@@ -118,6 +118,10 @@ div.stake {
     @include breakpoint(md) {
       max-width: 90%;
     }
+    @include breakpoint(sm) {
+      width: 100%;
+      margin: 12px 0;
+    }
     svg.triangle {
       margin-left: 10px;
       transform: norotate(0deg);

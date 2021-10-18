@@ -174,8 +174,14 @@ const StakePool = (props: Props): ReactElement => {
           <Button
             variant="primary"
             size="lg"
-            width={240}
-            mr={100}
+            width={{
+              base: 150,
+              md: 240,
+            }}
+            mr={{
+              base: 50,
+              md: 100,
+            }}
             onClick={(): void => {
               void handleStake()
             }}
@@ -186,7 +192,10 @@ const StakePool = (props: Props): ReactElement => {
           <Button
             variant="primary"
             size="lg"
-            width={240}
+            width={{
+              base: 150,
+              md: 240,
+            }}
             onClick={(): void => {
               void handleWithdraw()
             }}
@@ -205,7 +214,10 @@ const StakePool = (props: Props): ReactElement => {
             variant="primary"
             size="sm"
             width={160}
-            ml={30}
+            ml={{
+              base: 0,
+              md: 30,
+            }}
             onClick={(): void => {
               void handleClaimGDL()
             }}

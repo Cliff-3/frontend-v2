@@ -9,7 +9,6 @@ a {
 div.spinner {
   display: inline-block;
   vertical-align: top;
-  width: 100%;
   margin: 20px;
 }
 
@@ -48,6 +47,12 @@ div.poolOverview {
     grid-row: 5/6;
   }
 
+  @include breakpoint(sm) {
+    .tokens {
+      justify-content: center;
+    }
+  }
+
   .table {
     background: var(--background-element);
     width: 100%;
@@ -69,6 +74,13 @@ div.poolOverview {
   .left {
     display: grid;
     grid-template-rows: 40px 24px 22px 10px 20px;
+  }
+
+  @include breakpoint(sm) {
+    .left {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
   }
 
   .right {
@@ -97,6 +109,17 @@ div.poolOverview {
     }
 
     @include breakpoint(sm) {
+      .poolInfo {
+        margin-bottom: 1rem;
+        justify-content: center;
+
+        .Apy {
+          text-align: center;
+          margin: 0;
+          margin-bottom: 1rem;
+          width: 100%;
+        }
+      }
       .buttons {
         width: 100%;
       }

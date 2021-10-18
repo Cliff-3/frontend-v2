@@ -9,7 +9,7 @@ function Footer(): ReactElement {
   const { isDarkMode } = useSelector((state: AppState) => state.user)
 
   return (
-    <div className="container footer">
+    <div className="container footer text-center">
       <div className="row">
         <div className="col">
           <div>© 2021 by Gondola Finance</div>
